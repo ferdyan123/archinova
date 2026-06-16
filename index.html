@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArchiNova Architects — Design. Function. Harmony.</title>
+<meta name="description" content="ArchiNova Architects — Studio arsitektur profesional yang merancang hunian, ruang komersial, dan interior dengan harmoni antara desain, fungsi, dan keberlanjutan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --dark:        #0F0F12;
+  --dark-deep:   #0A0A0C;
+  --dark-mid:    #1C1C21;
+  --gold:        #D4AF37;
+  --gold-light:  #E8CC6E;
+  --gold-pale:   #F5E8C0;
+  --white:       #FFFFFF;
+  --off-white:   #FAFAF9;
+  --gray-100:    #F1F0EE;
+  --gray-200:    #E2E1DE;
+  --gray-400:    #A3A2A0;
+  --gray-600:    #6E6D6B;
+  --text-body:   #16161A;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  --shadow-card: 0 2px 20px rgba(20,20,27,0.08), 0 1px 4px rgba(20,20,27,0.04);
+  --shadow-lift: 0 12px 40px rgba(20,20,27,0.18), 0 4px 12px rgba(20,20,27,0.08);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  color: var(--text-body);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--gray-100); }
+::-webkit-scrollbar-thumb { background: var(--dark-mid); border-radius: 3px; }
+
+/* ═══ NAVBAR ═══ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 48px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--dark-deep);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: box-shadow 0.4s var(--ease-out), height 0.4s var(--ease-out);
+}
+.navbar.scrolled {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+  height: 68px;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 12px; }
+.nav-logo img {
+  height: 46px; width: 46px;
+  object-fit: contain;
+  background: var(--white);
+  border-radius: 6px;
+  padding: 3px;
+}
+.nav-logo-text { display: flex; flex-direction: column; }
+.nav-logo-text .company-name {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+}
+.nav-logo-text .company-name span { color: var(--gold); }
+.nav-logo-text .company-sub {
+  font-size: 9px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.25s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.3s var(--ease-out);
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  padding: 10px 24px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold) !important;
+  border-radius: var(--radius-sm);
+  font-size: 12px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  transition: background 0.25s, color 0.25s !important;
+}
+.nav-cta:hover { background: var(--gold); color: var(--dark-deep) !important; }
+.nav-cta::after { display: none !important; }
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+}
+
+/* ═══ HERO ═══ */
+.hero {
+  position: relative;
+  height: calc(100vh - 76px);
+  min-height: 620px;
+  margin-top: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg?auto=compress&cs=tinysrgb&w=2560&q=85') center/cover no-repeat;
+  transform-origin: center;
+  animation: heroZoom 16s var(--ease-out) infinite alternate;
+}
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,12,0.65) 0%, rgba(10,10,12,0.45) 45%, rgba(10,10,12,0.8) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 880px;
+  padding: 0 32px;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.3s var(--ease-out) forwards;
+}
+.hero-eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
+.hero-eyebrow span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 7vw, 88px);
+  font-weight: 600;
+  line-height: 1.08;
+  color: var(--white);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.5s var(--ease-out) forwards;
+}
+.hero-title em { font-style: italic; color: var(--gold-light); }
+
+.hero-subtitle {
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.78);
+  max-width: 580px;
+  margin: 0 auto 44px;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.7s var(--ease-out) forwards;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.9s var(--ease-out) forwards;
+}
+
+.btn-primary {
+  padding: 16px 38px;
+  background: var(--white);
+  color: var(--dark-deep);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+  display: inline-block;
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212,175,55,0.3);
+}
+
+.btn-outline-white {
+  padding: 15px 38px;
+  background: transparent;
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s;
+  display: inline-block;
+}
+.btn-outline-white:hover {
+  border-color: var(--white);
+  background: rgba(255,255,255,0.08);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0;
+  animation: fadeIn 1s 1.4s forwards;
+  cursor: pointer;
+  z-index: 2;
+}
+.hero-scroll span {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.hero-scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollLine 2s 1.4s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0%  { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100%{ transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ═══ STATS ═══ */
+.stats-bar { background: var(--dark-deep); padding: 0 80px; position: relative; }
+.stats-bar::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.stats-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat-item {
+  padding: 44px 32px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.stat-item:last-child { border-right: none; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4vw, 56px);
+  font-weight: 700; color: var(--gold); line-height: 1;
+  margin-bottom: 8px; display: flex; align-items: baseline; justify-content: center; gap: 2px;
+}
+.stat-number .suffix { font-size: 0.45em; font-weight: 400; opacity: 0.8; }
+.stat-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); line-height: 1.4;
+}
+
+/* ═══ SECTION UTILITIES ═══ */
+.section { padding: 100px 80px; }
+.section-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.eyebrow-line { width: 32px; height: 1px; background: var(--gold); flex-shrink: 0; }
+.eyebrow-text {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 600; line-height: 1.15; color: var(--dark-deep); margin-bottom: 20px;
+}
+.section-title em { font-style: italic; color: var(--dark-mid); }
+.section-desc { font-size: 16px; line-height: 1.75; color: var(--gray-600); max-width: 600px; font-weight: 300; }
+
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ═══ ABOUT ═══ */
+.about-section { background: var(--off-white); padding: 100px 80px; }
+.about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+.about-img-wrap { position: relative; }
+.about-img-main {
+  width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-lift);
+  aspect-ratio: 4/5; object-fit: cover;
+}
+.about-img-float {
+  position: absolute; bottom: -40px; right: -40px;
+  width: 55%; border-radius: var(--radius-md); box-shadow: var(--shadow-lift);
+  aspect-ratio: 4/3; object-fit: cover;
+  border: 6px solid var(--white);
+}
+.about-list { margin-top: 32px; display: flex; flex-direction: column; gap: 18px; }
+.about-list-item { display: flex; align-items: flex-start; gap: 14px; }
+.about-list-item svg { width: 20px; height: 20px; stroke: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.about-list-item span { font-size: 15px; color: var(--text-body); font-weight: 400; }
+
+/* ═══ LAYANAN ═══ */
+.layanan-section { background: var(--white); padding: 100px 80px; }
+.layanan-header {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 64px;
+}
+.layanan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.layanan-card {
+  background: var(--off-white); border-radius: var(--radius-md); padding: 40px 36px; position: relative;
+  overflow: hidden; transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+  border: 1px solid var(--gray-200);
+}
+.layanan-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0;
+  background: var(--gold); transition: height 0.4s var(--ease-out);
+}
+.layanan-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+.layanan-card:hover::before { height: 100%; }
+.layanan-card-number { font-family: var(--font-mono); font-size: 11px; color: var(--gray-400); margin-bottom: 24px; letter-spacing: 0.1em; }
+.layanan-icon { width: 52px; height: 52px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; }
+.layanan-icon svg { width: 36px; height: 36px; stroke: var(--dark); transition: stroke 0.3s; }
+.layanan-card:hover .layanan-icon svg { stroke: var(--gold); }
+.layanan-card-title { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--dark-deep); margin-bottom: 12px; }
+.layanan-card-desc { font-size: 14px; line-height: 1.7; color: var(--gray-600); font-weight: 300; }
+
+/* ═══ PORTFOLIO ═══ */
+.proyek-section { padding: 100px 80px; background: var(--off-white); }
+.proyek-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; }
+.proyek-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 16px; }
+.proyek-card { position: relative; overflow: hidden; border-radius: var(--radius-md); cursor: pointer; }
+.proyek-card:first-child { grid-row: span 2; min-height: 520px; }
+.proyek-card:not(:first-child) { min-height: 248px; }
+.proyek-card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease-out); }
+.proyek-card:hover .proyek-card-img { transform: scale(1.06); }
+.proyek-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(20,20,27,0.92) 0%, rgba(20,20,27,0.15) 55%, transparent 100%);
+  transition: background 0.4s;
+}
+.proyek-card:hover .proyek-card-overlay {
+  background: linear-gradient(to top, rgba(20,20,27,0.96) 0%, rgba(20,20,27,0.4) 60%, rgba(20,20,27,0.1) 100%);
+}
+.proyek-card-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px 28px; }
+.proyek-badge {
+  display: inline-block; padding: 4px 10px; background: rgba(201,162,74,0.2);
+  border: 1px solid rgba(201,162,74,0.4); color: var(--gold-light); font-size: 10px;
+  font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; margin-bottom: 10px;
+}
+.proyek-card-title {
+  font-family: var(--font-display); font-size: clamp(18px, 1.8vw, 24px); font-weight: 600; color: var(--white); line-height: 1.2; margin-bottom: 8px;
+}
+.proyek-card-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.proyek-card-meta span { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 300; }
+.proyek-card-meta .dot { width: 3px; height: 3px; background: var(--gold); border-radius: 50%; }
+.proyek-card-arrow {
+  position: absolute; top: 24px; right: 24px; width: 36px; height: 36px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; opacity: 0;
+  transform: translate(4px, -4px); transition: opacity 0.3s, transform 0.3s;
+}
+.proyek-card:hover .proyek-card-arrow { opacity: 1; transform: translate(0, 0); }
+.proyek-card-arrow svg { width: 14px; height: 14px; stroke: white; }
+
+/* ═══ KEUNGGULAN ═══ */
+.keunggulan-section { background: var(--dark-deep); padding: 100px 80px; position: relative; overflow: hidden; }
+.keunggulan-section::before {
+  content: ''; position: absolute; top: -120px; right: -120px; width: 400px; height: 400px;
+  border-radius: 50%; background: radial-gradient(circle, rgba(201,162,74,0.08) 0%, transparent 70%); pointer-events: none;
+}
+.keunggulan-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: center; }
+.keunggulan-left .section-title { color: var(--white); }
+.keunggulan-left .section-desc { color: rgba(255,255,255,0.5); }
+.keunggulan-cta-group { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; }
+.btn-gold {
+  display: inline-block; padding: 16px 36px; background: var(--white); color: var(--dark-deep);
+  font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; border-radius: var(--radius-sm);
+  text-align: center; transition: background 0.25s, transform 0.2s;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-ghost-white {
+  display: inline-block; padding: 15px 36px; background: transparent; color: rgba(255,255,255,0.7);
+  font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.15); text-align: center; transition: border-color 0.25s, color 0.25s;
+}
+.btn-ghost-white:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
+.keunggulan-list { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.keunggulan-item {
+  padding: 32px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--radius-md); transition: background 0.3s;
+}
+.keunggulan-item:hover { background: rgba(255,255,255,0.06); }
+.keunggulan-item-icon {
+  width: 44px; height: 44px; background: rgba(201,162,74,0.12); border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+}
+.keunggulan-item-icon svg { width: 22px; height: 22px; stroke: var(--gold); }
+.keunggulan-item-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+.keunggulan-item-desc { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.45); font-weight: 300; }
+
+/* ═══ TESTIMONI ═══ */
+.testimoni-section { padding: 100px 80px; background: var(--white); }
+.testimoni-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+.testimoni-card {
+  background: var(--off-white); border-radius: var(--radius-md); padding: 40px 36px; position: relative;
+  border: 1px solid var(--gray-200); transition: box-shadow 0.3s, transform 0.3s;
+}
+.testimoni-card:hover { box-shadow: var(--shadow-lift); transform: translateY(-4px); }
+.testimoni-quote-mark { font-family: var(--font-display); font-size: 80px; line-height: 0.5; color: var(--gold); opacity: 0.3; margin-bottom: 16px; display: block; }
+.testimoni-text { font-family: var(--font-display); font-size: 18px; font-style: italic; line-height: 1.65; color: var(--dark-deep); margin-bottom: 32px; }
+.testimoni-author { display: flex; align-items: center; gap: 14px; }
+.testimoni-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--dark-mid); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.testimoni-avatar-initials { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--gold); }
+.testimoni-author-name { font-size: 15px; font-weight: 600; color: var(--dark-deep); line-height: 1.2; }
+.testimoni-author-role { font-size: 12px; color: var(--gray-600); margin-top: 2px; font-weight: 300; }
+.testimoni-stars { display: flex; gap: 2px; margin-bottom: 20px; }
+.star { width: 14px; height: 14px; fill: var(--gold); }
+
+/* ═══ CTA BANNER ═══ */
+.cta-banner { background: var(--dark); padding: 80px; position: relative; overflow: hidden; }
+.cta-banner::before {
+  content: ''; position: absolute; top: -40%; right: -5%; width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,162,74,0.1) 0%, transparent 60%); pointer-events: none;
+}
+.cta-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap; }
+.cta-text .section-title { color: var(--white); margin-bottom: 12px; }
+.cta-text .section-desc { color: rgba(255,255,255,0.5); }
+.cta-actions { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+.cta-whatsapp {
+  display: flex; align-items: center; gap: 10px; padding: 16px 32px; background: var(--white); color: var(--dark-deep);
+  border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  transition: background 0.25s, transform 0.2s;
+}
+.cta-whatsapp:hover { background: var(--gold-light); transform: translateY(-2px); }
+.cta-whatsapp svg { width: 18px; height: 18px; fill: var(--dark-deep); flex-shrink: 0; }
+.cta-contact { display: flex; align-items: center; gap: 8px; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.5); padding: 10px; }
+.cta-contact strong { color: var(--gold); }
+
+/* ═══ FOOTER ═══ */
+.footer { background: var(--dark-deep); padding: 72px 80px 40px; border-top: 1px solid rgba(201,162,74,0.15); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 56px; margin-bottom: 56px; }
+.footer-brand .nav-logo { margin-bottom: 20px; }
+.footer-brand-desc { font-size: 13px; line-height: 1.75; color: rgba(255,255,255,0.4); max-width: 280px; font-weight: 300; }
+.footer-col-title { font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.footer-links li + li { margin-top: 10px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); transition: color 0.25s; font-weight: 300; }
+.footer-links a:hover { color: var(--white); }
+.footer-contact-item { display: flex; gap: 12px; margin-bottom: 14px; }
+.footer-contact-icon { width: 16px; flex-shrink: 0; margin-top: 2px; }
+.footer-contact-icon svg { width: 14px; height: 14px; stroke: var(--gold); opacity: 0.8; }
+.footer-contact-text { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; font-weight: 300; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06); padding-top: 28px; display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-copyright { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-legal { display: flex; gap: 24px; }
+.footer-legal a { font-size: 12px; color: rgba(255,255,255,0.3); transition: color 0.2s; }
+.footer-legal a:hover { color: rgba(255,255,255,0.6); }
+
+/* ═══ FLOATING WA ═══ */
+.float-wa { position: fixed; bottom: 28px; right: 28px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.float-wa-btn {
+  width: 56px; height: 56px; background: var(--dark-deep); border: 1px solid rgba(212,175,55,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35); cursor: pointer; transition: transform 0.25s, box-shadow 0.25s, background 0.25s; text-decoration: none;
+}
+.float-wa-btn:hover { transform: scale(1.1); background: var(--gold); box-shadow: 0 6px 28px rgba(212,175,55,0.4); }
+.float-wa-btn svg { width: 26px; height: 26px; fill: var(--gold); transition: fill 0.25s; }
+.float-wa-btn:hover svg { fill: var(--dark-deep); }
+.float-wa-tooltip {
+  background: var(--dark-deep); color: var(--white); font-size: 12px; padding: 8px 14px; border-radius: var(--radius-sm);
+  white-space: nowrap; opacity: 0; transform: translateX(8px); transition: opacity 0.25s, transform 0.25s; pointer-events: none;
+}
+.float-wa:hover .float-wa-tooltip { opacity: 1; transform: translateX(0); }
+.float-wa-pulse {
+  position: absolute; top: 0; right: 0; width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(212,175,55,0.25); animation: waPulse 2.5s ease-out infinite;
+}
+@keyframes waPulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.6); opacity: 0; } }
+
+/* ═══ MOBILE NAV ═══ */
+.mobile-nav {
+  display: none; position: fixed; inset: 0; background: var(--dark-deep); z-index: 1100;
+  flex-direction: column; justify-content: center; align-items: center; gap: 32px;
+  transform: translateX(100%); transition: transform 0.4s var(--ease-out);
+}
+.mobile-nav.open { display: flex; transform: translateX(0); }
+.mobile-nav a { font-family: var(--font-display); font-size: 32px; font-weight: 600; color: rgba(255,255,255,0.7); transition: color 0.2s; }
+.mobile-nav a:hover { color: var(--gold); }
+.mobile-nav-close { position: absolute; top: 24px; right: 28px; font-size: 28px; color: white; cursor: pointer; background: none; border: none; line-height: 1; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 1100px) {
+  .navbar, .section, .about-section, .layanan-section, .proyek-section,
+  .keunggulan-section, .testimoni-section, .cta-banner, .footer {
+    padding-left: 48px; padding-right: 48px;
+  }
+  .stats-bar { padding-left: 48px; padding-right: 48px; }
+  .proyek-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .about-grid { grid-template-columns: 1fr; gap: 80px; }
+  .about-img-float { width: 50%; }
+}
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .layanan-grid { grid-template-columns: 1fr 1fr; }
+  .keunggulan-inner { grid-template-columns: 1fr; gap: 48px; }
+  .keunggulan-list { grid-template-columns: 1fr; }
+  .testimoni-grid { grid-template-columns: 1fr 1fr; }
+  .proyek-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .proyek-card:first-child { grid-row: span 1; min-height: 320px; }
+  .proyek-card:not(:first-child) { min-height: 220px; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat-item { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .cta-inner { flex-direction: column; }
+}
+@media (max-width: 600px) {
+  .navbar, .section, .about-section, .layanan-section, .proyek-section,
+  .keunggulan-section, .testimoni-section, .cta-banner, .footer { padding-left: 20px; padding-right: 20px; }
+  .stats-bar { padding: 0 20px; }
+  .hero-scroll { display: none; }
+  .hero-title { font-size: 40px; }
+  .layanan-grid { grid-template-columns: 1fr; }
+  .testimoni-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .proyek-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .layanan-header { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .about-img-float { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="images/logo.png" alt="ArchiNova Architects Logo">
+    <div class="nav-logo-text">
+      <span class="company-name">Archi<span>Nova</span></span>
+      <span class="company-sub">Design · Function · Harmony</span>
+    </div>
+  </a>
+
+  <div class="nav-links">
+    <a href="#beranda">Beranda</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#layanan">Layanan</a>
+    <a href="#proyek">Portofolio</a>
+    <a href="#kontak" class="nav-cta">Konsultasi</a>
+  </div>
+
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+  <a href="#beranda" onclick="toggleMobileNav()">Beranda</a>
+  <a href="#tentang" onclick="toggleMobileNav()">Tentang Kami</a>
+  <a href="#layanan" onclick="toggleMobileNav()">Layanan</a>
+  <a href="#proyek" onclick="toggleMobileNav()">Portofolio</a>
+  <a href="#kontak" onclick="toggleMobileNav()">Konsultasi</a>
+</div>
+
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="beranda">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Studio Arsitektur Profesional</span>
+      <div class="hero-eyebrow-line"></div>
+    </div>
+
+    <h1 class="hero-title">
+      Wujudkan <em>Hunian</em><br>Impian Anda
+    </h1>
+
+    <p class="hero-subtitle">
+      ArchiNova Architects merancang rumah, ruang komersial, dan interior dengan pendekatan desain yang elegan, fungsional, dan selaras dengan gaya hidup Anda.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#proyek" class="btn-primary">Lihat Portofolio</a>
+      <a href="#kontak" class="btn-outline-white">Konsultasi Gratis</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" onclick="document.getElementById('stats').scrollIntoView({behavior:'smooth'})">
+    <div class="hero-scroll-line"></div>
+    <span>Gulir</span>
+  </div>
+</section>
+
+
+<!-- ═══ STATS ═══ -->
+<div class="stats-bar" id="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-number"><span class="counter" data-target="120">0</span><span class="suffix">+</span></div>
+      <div class="stat-label">Proyek<br>Dirancang</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span class="counter" data-target="12">0</span><span class="suffix">Thn</span></div>
+      <div class="stat-label">Pengalaman<br>Studio</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span class="counter" data-target="18">0</span><span class="suffix">+</span></div>
+      <div class="stat-label">Arsitek &amp;<br>Desainer</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span class="counter" data-target="96">0</span><span class="suffix">%</span></div>
+      <div class="stat-label">Klien<br>Puas</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ TENTANG / ABOUT ═══ -->
+<section class="about-section" id="tentang">
+  <div class="about-grid">
+
+    <div class="about-img-wrap reveal">
+      <img class="about-img-main" src="images/interior-1.jpg" alt="Interior mewah hasil rancangan ArchiNova">
+      <img class="about-img-float" src="images/project-2.jpg" alt="Fasad rumah modern ArchiNova">
+    </div>
+
+    <div>
+      <div class="section-eyebrow reveal">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Tentang Kami</span>
+      </div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Merancang dengan<br><em>Harmoni &amp; Presisi</em>
+      </h2>
+      <p class="section-desc reveal reveal-delay-2">
+        ArchiNova Architects adalah studio desain arsitektur yang berfokus pada keseimbangan antara estetika, fungsi ruang, dan efisiensi konstruksi. Setiap proyek kami mulai dari riset kebutuhan klien hingga pengawasan pelaksanaan di lapangan.
+      </p>
+
+      <div class="about-list reveal reveal-delay-3">
+        <div class="about-list-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Desain arsitektur &amp; interior end-to-end, dari konsep hingga gambar kerja.</span>
+        </div>
+        <div class="about-list-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Visualisasi 3D realistis sebelum proyek mulai dibangun.</span>
+        </div>
+        <div class="about-list-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Pengawasan berkala untuk memastikan hasil sesuai rancangan.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ LAYANAN ═══ -->
+<section class="layanan-section" id="layanan">
+  <div class="layanan-header">
+    <div>
+      <div class="section-eyebrow reveal">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Layanan Kami</span>
+      </div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Solusi Desain<br><em>untuk Setiap Kebutuhan</em>
+      </h2>
+      <p class="section-desc reveal reveal-delay-2">
+        Kami melayani perancangan hunian, ruang komersial, dan interior dengan pendekatan kolaboratif bersama klien.
+      </p>
+    </div>
+  </div>
+
+  <div class="layanan-grid">
+    <div class="layanan-card reveal reveal-delay-1">
+      <div class="layanan-card-number">01</div>
+      <div class="layanan-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M9 21V7l6-4v18M9 10h6M9 14h6M9 18h6"/></svg>
+      </div>
+      <h3 class="layanan-card-title">Desain Hunian</h3>
+      <p class="layanan-card-desc">Perancangan rumah tinggal, villa, dan townhouse dengan gaya modern, minimalis, hingga klasik kontemporer.</p>
+    </div>
+
+    <div class="layanan-card reveal reveal-delay-2">
+      <div class="layanan-card-number">02</div>
+      <div class="layanan-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      </div>
+      <h3 class="layanan-card-title">Desain Interior</h3>
+      <p class="layanan-card-desc">Penataan ruang dalam — pemilihan material, pencahayaan, furnitur, dan dekorasi yang selaras dengan konsep arsitektur.</p>
+    </div>
+
+    <div class="layanan-card reveal reveal-delay-3">
+      <div class="layanan-card-number">03</div>
+      <div class="layanan-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10M9 20v-6h6v6"/></svg>
+      </div>
+      <h3 class="layanan-card-title">Ruang Komersial</h3>
+      <p class="layanan-card-desc">Desain kantor, ruko, kafe, dan ruang usaha yang mendukung citra brand sekaligus kenyamanan pengguna.</p>
+    </div>
+
+    <div class="layanan-card reveal reveal-delay-1">
+      <div class="layanan-card-number">04</div>
+      <div class="layanan-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      </div>
+      <h3 class="layanan-card-title">Visualisasi 3D</h3>
+      <p class="layanan-card-desc">Render eksterior &amp; interior fotorealistik untuk membantu klien membayangkan hasil akhir sebelum konstruksi.</p>
+    </div>
+
+    <div class="layanan-card reveal reveal-delay-2">
+      <div class="layanan-card-number">05</div>
+      <div class="layanan-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+      </div>
+      <h3 class="layanan-card-title">Renovasi &amp; Remodel</h3>
+      <p class="layanan-card-desc">Transformasi ruang lama menjadi lebih fungsional dan estetis tanpa mengubah struktur secara berlebihan.</p>
+    </div>
+
+    <div class="layanan-card reveal reveal-delay-3">
+      <div class="layanan-card-number">06</div>
+      <div class="layanan-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3 class="layanan-card-title">Pengawasan Konstruksi</h3>
+      <p class="layanan-card-desc">Pendampingan berkala selama proses pembangunan agar hasil akhir sesuai dengan gambar rancangan.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ PORTFOLIO ═══ -->
+<section class="proyek-section" id="proyek">
+  <div class="proyek-header">
+    <div>
+      <div class="section-eyebrow reveal">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Portofolio</span>
+      </div>
+      <h2 class="section-title reveal reveal-delay-1">Karya <em>Terpilih</em></h2>
+    </div>
+  </div>
+
+  <div class="proyek-grid">
+    <div class="proyek-card reveal">
+      <img class="proyek-card-img" src="images/project-1.jpg" alt="Hunian modern minimalis dua lantai">
+      <div class="proyek-card-overlay"></div>
+      <div class="proyek-card-content">
+        <div class="proyek-badge">Hunian</div>
+        <h3 class="proyek-card-title">Villa Modern Minimalis — Pondok Indah</h3>
+        <div class="proyek-card-meta">
+          <span>Jakarta Selatan</span>
+          <div class="dot"></div>
+          <span>450 m²</span>
+          <div class="dot"></div>
+          <span>2025</span>
+        </div>
+      </div>
+      <div class="proyek-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </div>
+
+    <div class="proyek-card reveal reveal-delay-1">
+      <img class="proyek-card-img" src="images/project-2.jpg" alt="Rumah modern dua lantai dengan taman">
+      <div class="proyek-card-overlay"></div>
+      <div class="proyek-card-content">
+        <div class="proyek-badge">Hunian</div>
+        <h3 class="proyek-card-title">Rumah Kontemporer dengan Kayu &amp; Batu Alam</h3>
+        <div class="proyek-card-meta">
+          <span>Tangerang</span>
+          <div class="dot"></div>
+          <span>2024</span>
+        </div>
+      </div>
+      <div class="proyek-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </div>
+
+    <div class="proyek-card reveal reveal-delay-2">
+      <img class="proyek-card-img" src="images/interior-1.jpg" alt="Ruang tamu double-height ultra mewah">
+      <div class="proyek-card-overlay"></div>
+      <div class="proyek-card-content">
+        <div class="proyek-badge">Interior</div>
+        <h3 class="proyek-card-title">Living Room Double-Height — Ultra Luxury</h3>
+        <div class="proyek-card-meta">
+          <span>Bali</span>
+          <div class="dot"></div>
+          <span>2024</span>
+        </div>
+      </div>
+      <div class="proyek-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </div>
+
+    <div class="proyek-card reveal reveal-delay-3">
+      <img class="proyek-card-img" src="images/interior-2.jpg" alt="Interior rumah dengan elemen kayu hangat">
+      <div class="proyek-card-overlay"></div>
+      <div class="proyek-card-content">
+        <div class="proyek-badge">Interior</div>
+        <h3 class="proyek-card-title">Family Lounge — Warm Wood Concept</h3>
+        <div class="proyek-card-meta">
+          <span>Bandung</span>
+          <div class="dot"></div>
+          <span>2023</span>
+        </div>
+      </div>
+      <div class="proyek-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ KEUNGGULAN ═══ -->
+<section class="keunggulan-section">
+  <div class="keunggulan-inner">
+    <div class="keunggulan-left">
+      <div class="section-eyebrow reveal">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Kenapa ArchiNova</span>
+      </div>
+      <h2 class="section-title reveal reveal-delay-1">Desain yang<br><em>Berbicara</em></h2>
+      <p class="section-desc reveal reveal-delay-2">
+        Kami percaya desain yang baik lahir dari mendengarkan — memahami cara Anda hidup, bekerja, dan menikmati ruang.
+      </p>
+      <div class="keunggulan-cta-group reveal reveal-delay-3">
+        <a href="#kontak" class="btn-gold">Mulai Konsultasi</a>
+        <a href="#proyek" class="btn-ghost-white">Lihat Semua Karya</a>
+      </div>
+    </div>
+
+    <div class="keunggulan-list">
+      <div class="keunggulan-item reveal">
+        <div class="keunggulan-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="keunggulan-item-title">Tim Berpengalaman</div>
+        <p class="keunggulan-item-desc">Arsitek dan desainer interior dengan lebih dari satu dekade pengalaman lintas proyek.</p>
+      </div>
+      <div class="keunggulan-item reveal reveal-delay-1">
+        <div class="keunggulan-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <div class="keunggulan-item-title">Proses Efisien</div>
+        <p class="keunggulan-item-desc">Timeline desain yang jelas, dengan revisi terstruktur agar proyek tetap on-track.</p>
+      </div>
+      <div class="keunggulan-item reveal reveal-delay-1">
+        <div class="keunggulan-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="keunggulan-item-title">Visualisasi Realistis</div>
+        <p class="keunggulan-item-desc">Render 3D fotorealistik membantu Anda melihat hasil akhir sebelum konstruksi dimulai.</p>
+      </div>
+      <div class="keunggulan-item reveal reveal-delay-2">
+        <div class="keunggulan-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <div class="keunggulan-item-title">Pendampingan Penuh</div>
+        <p class="keunggulan-item-desc">Dari konsep awal hingga pengawasan konstruksi, kami terus mendampingi setiap tahap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TESTIMONI ═══ -->
+<section class="testimoni-section">
+  <div class="section-eyebrow reveal">
+    <div class="eyebrow-line"></div>
+    <span class="eyebrow-text">Testimoni Klien</span>
+  </div>
+  <h2 class="section-title reveal reveal-delay-1">Apa Kata <em>Klien Kami</em></h2>
+
+  <div class="testimoni-grid">
+    <div class="testimoni-card reveal reveal-delay-1">
+      <span class="testimoni-quote-mark">"</span>
+      <div class="testimoni-stars">
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="testimoni-text">Tim ArchiNova benar-benar mendengarkan kebutuhan kami. Hasil desain rumah jauh melebihi ekspektasi — modern tapi tetap hangat.</p>
+      <div class="testimoni-author">
+        <div class="testimoni-avatar"><div class="testimoni-avatar-initials">RP</div></div>
+        <div class="testimoni-author-info">
+          <div class="testimoni-author-name">Rino Pratama</div>
+          <div class="testimoni-author-role">Pemilik Rumah · Tangerang</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimoni-card reveal reveal-delay-2">
+      <span class="testimoni-quote-mark">"</span>
+      <div class="testimoni-stars">
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="testimoni-text">Proses visualisasi 3D sangat membantu kami memutuskan material dan tata letak sebelum pembangunan dimulai. Sangat efisien.</p>
+      <div class="testimoni-author">
+        <div class="testimoni-avatar"><div class="testimoni-avatar-initials">DS</div></div>
+        <div class="testimoni-author-info">
+          <div class="testimoni-author-name">Dewi Sartika</div>
+          <div class="testimoni-author-role">Pemilik Villa · Bali</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimoni-card reveal reveal-delay-3">
+      <span class="testimoni-quote-mark">"</span>
+      <div class="testimoni-stars">
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="testimoni-text">Pendampingan saat konstruksi sangat membantu — setiap detail diperiksa agar sesuai gambar. Hasil akhirnya rapi sekali.</p>
+      <div class="testimoni-author">
+        <div class="testimoni-avatar"><div class="testimoni-avatar-initials">AH</div></div>
+        <div class="testimoni-author-info">
+          <div class="testimoni-author-name">Andi Hidayat</div>
+          <div class="testimoni-author-role">Pemilik Ruko · Bandung</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CTA BANNER ═══ -->
+<section class="cta-banner" id="kontak">
+  <div class="cta-inner">
+    <div class="cta-text reveal">
+      <h2 class="section-title">Siap Merancang<br><em>Ruang Impian Anda?</em></h2>
+      <p class="section-desc">Ceritakan visi Anda kepada kami. Tim ArchiNova siap memberikan konsultasi desain awal secara gratis.</p>
+    </div>
+    <div class="cta-actions reveal reveal-delay-2">
+      <a href="https://wa.me/6281234567890?text=Halo%20ArchiNova%20Architects%2C%20saya%20ingin%20konsultasi%20desain." class="cta-whatsapp" target="_blank">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M11.998 1.998C6.477 1.998 2 6.476 2 11.997c0 1.882.52 3.638 1.419 5.148L2.006 22l4.981-1.395A9.935 9.935 0 0012 21.997c5.523 0 10-4.477 10-10S17.52 1.998 12 1.998zm0 18c-1.795 0-3.468-.492-4.895-1.343l-.35-.208-3.627 1.016 1.027-3.553-.228-.364C2.998 14.22 2.499 13.136 2.499 12c0-5.24 4.262-9.503 9.503-9.503 5.24 0 9.498 4.263 9.498 9.503 0 5.241-4.258 9.498-9.502 9.498z"/>
+        </svg>
+        Chat WhatsApp Sekarang
+      </a>
+      <a href="mailto:hello@archinova.studio" class="btn-outline-white" style="text-align:center; font-size:12px; letter-spacing:0.08em; font-weight:600;">
+        Kirim Email Inquiry
+      </a>
+      <div class="cta-contact">Telepon: <strong>&nbsp;(021) 5566-7788</strong></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <img src="images/logo.png" alt="ArchiNova Architects Logo">
+        <div class="nav-logo-text">
+          <span class="company-name">Archi<span>Nova</span></span>
+          <span class="company-sub">Design · Function · Harmony</span>
+        </div>
+      </div>
+      <p class="footer-brand-desc">
+        ArchiNova Architects — studio desain arsitektur &amp; interior yang menghadirkan ruang harmonis antara estetika, fungsi, dan keberlanjutan.
+      </p>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Navigasi</div>
+      <ul class="footer-links">
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#tentang">Tentang Kami</a></li>
+        <li><a href="#layanan">Layanan</a></li>
+        <li><a href="#proyek">Portofolio</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Layanan</div>
+      <ul class="footer-links">
+        <li><a href="#">Desain Hunian</a></li>
+        <li><a href="#">Desain Interior</a></li>
+        <li><a href="#">Ruang Komersial</a></li>
+        <li><a href="#">Visualisasi 3D</a></li>
+        <li><a href="#">Renovasi &amp; Remodel</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Kontak</div>
+      <div class="footer-contact-item">
+        <div class="footer-contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div class="footer-contact-text">Jl. Kemang Raya No. 21,<br>Jakarta Selatan 12730</div>
+      </div>
+      <div class="footer-contact-item">
+        <div class="footer-contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        </div>
+        <div class="footer-contact-text">(021) 5566-7788<br>+62 813-1122-3344</div>
+      </div>
+      <div class="footer-contact-item">
+        <div class="footer-contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="footer-contact-text">hello@archinova.studio</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copyright">© 2025 ArchiNova Architects. Seluruh hak dilindungi.</p>
+    <div class="footer-legal">
+      <a href="#">Kebijakan Privasi</a>
+      <a href="#">Syarat &amp; Ketentuan</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══ FLOATING WA ═══ -->
+<div class="float-wa">
+  <div class="float-wa-tooltip">Chat dengan tim kami</div>
+  <a class="float-wa-btn" href="https://wa.me/6281234567890?text=Halo%20ArchiNova%20Architects%2C%20saya%20ingin%20konsultasi%20desain." target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp">
+    <div class="float-wa-pulse"></div>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM11.998 1.998C6.477 1.998 2 6.476 2 11.997c0 1.882.52 3.638 1.419 5.148L2.006 22l4.981-1.395A9.935 9.935 0 0012 21.997c5.523 0 10-4.477 10-10S17.52 1.998 12 1.998zm0 18c-1.795 0-3.468-.492-4.895-1.343l-.35-.208-3.627 1.016 1.027-3.553-.228-.364C2.998 14.22 2.499 13.136 2.499 12c0-5.24 4.262-9.503 9.503-9.503 5.24 0 9.498 4.263 9.498 9.503 0 5.241-4.258 9.498-9.502 9.498z"/>
+    </svg>
+  </a>
+</div>
+
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 48);
+}, { passive: true });
+
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  nav.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+}
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+function animateCounter(el, target, duration = 1800) {
+  let start = 0;
+  const step = timestamp => {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(ease * target);
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  };
+  requestAnimationFrame(step);
+}
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.counter').forEach(counter => {
+        animateCounter(counter, parseInt(counter.dataset.target));
+      });
+      statsObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+const statsBar = document.querySelector('.stats-bar');
+if (statsBar) statsObserver.observe(statsBar);
+</script>
+
+</body>
+</html>
